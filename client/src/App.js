@@ -1,15 +1,26 @@
 import './App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import Home from './pages/home';
-import Profile from './pages/Profile';
-import Addpost from './pages/Addpost';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import { useSelector, useDispatch } from 'react-redux';
+import Addpost from "./pages/Addpost";
+import Profile from "./pages/Profile";
+import Home from "./pages/home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { useSelector , useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getAllPosts } from "./redux/actions/postActions";
+import { getAllUsers } from "./redux/actions/userActions";
+
+
+  
 
 function App() {
   const {loading, likeOrUnlikeLoading} = useSelector(state => state.alertsReducer);
 
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getAllPosts())
+    dispatch(getAllUsers())
+  }, [])
 
   return (
     <div className="App">

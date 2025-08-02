@@ -31,6 +31,23 @@ export const userLogin = (values) => async dispatch => {
     catch (error) {
         console.log(error);
         dispatch({ type: 'LOADING', payload: false });
-        message.error('Something went wrong');
+        message.error('Invalid credentials');
+    }
+}
+
+export const getAllUsers = () => async dispatch => {
+
+    dispatch({type:'LOADING', payload:true})
+
+    try {
+        const res = await axios.get('/api/users/getallusers')
+        dispatch({type:'LOADING', payload:false})
+        dispatch({type:'GET_ALL_USERS', payload:res.data})
+        return res.data
+    }
+    catch (error) {
+        console.log(error)
+        dispatch({type:'LOADING', payload:false})
+        message.error('Something went wrong')
     }
 }

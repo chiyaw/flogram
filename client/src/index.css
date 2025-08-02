@@ -48,6 +48,17 @@ input[type='file']{
   color: white;
 }
 
+.profilepic2{
+  padding: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: grey;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  color: white;
+}
+
 .namecss{
   color: black;
   font-weight: bold;
